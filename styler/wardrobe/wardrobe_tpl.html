@@ -1,0 +1,289 @@
+<style>
+    /* CSS for Wardrobe */
+    .col-1 img{width:150px;}
+h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+       .outfit-section {
+            max-width: 900px;
+            margin: auto;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .wardrobe {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .wardrobe-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .wardrobe-item img {            
+            height: 200px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .nav-btn {
+            cursor: pointer;
+            padding: 5px 15px;
+            border: none;
+            border-radius: 5px;
+            background: #000;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #111;
+        }
+
+        .summary {
+            flex: 1;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            position: sticky;
+            top: 20px;
+        }
+
+        .summary h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .summary div {
+            font-size: 18px;
+            margin: 8px 0;
+        }
+
+        .total-price {
+            font-weight: bold;
+            color: #28a745;
+            font-size: 22px;
+        }
+
+        .buy{
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .img-container{
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .navigation .next,.navigation .prev{padding:10px}
+        .navigation .next:hover,.navigation .prev:hover{background:#f0f0f0;border-radius:10px;}
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .outfit-section {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .summary {
+                position: relative;
+                top: auto;
+                width: 100%;
+            }
+
+            .wardrobe-item img {
+                width: 150px;
+            }
+        }
+    </style>
+
+<h1 style="text-align: center;">{headline}</h1>
+<div class="outfit-section">
+    <div class="wardrobe">
+        
+        <div class="wardrobe-item wardrobe-hats">
+            <div class="name">Accessories</div>
+            <div class="img-container">
+                <div class="navigation"><button class="prev">◀</button></div>
+                <img src="" />
+                <div class="navigation"><button class="next">▶</button></div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn remove" style="background:none;color:#9b2727">Remove</button>
+                <a href="" class="nav-btn buy" target="_blank" style="background: green;">Buy</a>
+            </div>
+        </div>
+
+        <div class="wardrobe-item wardrobe-tops">
+            <div class="name">Tops</div>
+            <div class="img-container">
+                <div class="navigation"><button class="prev">◀</button></div>
+                <img src="" />
+                <div class="navigation"><button class="next">▶</button></div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn remove" style="background:none;color:#9b2727">Remove</button>
+                <a href="" class="nav-btn buy" target="_blank" style="background: green;">Buy</a>
+            </div>
+        </div>
+
+        <div class="wardrobe-item wardrobe-bottoms">
+            <div class="name">Bottoms</div>
+            <div class="img-container">
+                <div class="navigation"><button class="prev">◀</button></div>
+                <img src="" />
+                <div class="navigation"><button class="next">▶</button></div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn remove" style="background:none;color:#9b2727">Remove</button>
+                <a href="" class="nav-btn buy" target="_blank" style="background: green;">Buy</a>
+            </div>
+        </div>
+
+        <div class="wardrobe-item wardrobe-shoes">
+            <div class="name">Shoes</div>
+            <div class="img-container">
+                <div class="navigation"><button class="prev">◀</button></div>
+                <img src="" />
+                <div class="navigation"><button class="next">▶</button></div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn remove" style="background:none;color:#9b2727">Remove</button>
+                <a href="" class="nav-btn buy" target="_blank" style="background: green;">Buy</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="summary">
+        <h2>Price Summary</h2>
+        <div>Hats Price: £<span class="hats-price"></span></div>
+        <div>Tops Price: £<span class="tops-price"></span></div>
+        <div>Bottoms Price: £<span class="bottoms-price"></span></div>
+        <div>Shoes Price: £<span class="shoes-price"></span></div>
+        <hr>
+        <div>Total Price: £<span class="total-price"></span></div>
+    </div>
+
+</div>
+
+<script>
+/* json prepared by PHP - parsed by JS*/
+var tops_json = JSON.parse('{tops_json}');
+var bottoms_json = JSON.parse('{bottoms_json}');
+var shoes_json = JSON.parse('{shoes_json}');
+var hats_json = JSON.parse('{hats_json}');
+
+/*creating object for each category and storing corresponding category json */
+var categories = {
+    tops: tops_json,
+    bottoms: bottoms_json,
+    shoes: shoes_json,
+    hats: hats_json
+};
+
+/*index markers for each category*/
+var currentIndex = { tops: 0, bottoms: 0, shoes: 0, hats: 0 };
+
+
+/* function to update the HTML */
+function updateDisplay() {
+    Object.keys(categories).forEach(category => {
+        const container = $(`.wardrobe-${category}`);
+        const item = categories[category][currentIndex[category]];
+
+        if (!categories[category].length) {
+            container.find('.name').text('No ' + category + ' were added');
+            container.find('img').hide();
+            container.find('.navigation').hide();
+            $(`.summary .${category}-price`).text("0.00");
+            return;
+        }
+
+        if (item !== undefined) {
+            container.find('.name').text(item.name);
+            container.find('.buy').attr('href', item.item_url);
+            container.find('img').attr('src', item.image_url).show();
+            container.find('.navigation').show();
+
+            /*  Hide prev/next buttons if only one item */
+            if (categories[category].length === 1) {
+                container.find('.prev, .next').hide();
+            } else {
+                container.find('.prev, .next').show();
+            }
+
+            $(`.summary .${category}-price`).text(item.price);
+        } else {
+            container.find('.name').text('');
+            container.find('img').hide();
+            container.find('.navigation').hide();
+            $(`.summary .${category}-price`).text("0.00");
+        }
+    });
+
+    try {
+        const totalPrice = Object.keys(categories).reduce((sum, category) => {
+            const price = parseFloat(categories[category]?.[currentIndex[category]]?.price) || 0;
+            return sum + price;
+        }, 0);
+        $('.summary .total-price').text(totalPrice.toFixed(2));
+    } catch (e) {}
+}
+
+
+
+/* function to navigate for each section */
+function navigate(category, direction) {
+    /*depending on category it will update the current index, depending which direction*/
+    var maxIndex = categories[category].length - 1;
+    currentIndex[category] = (direction === 'prev') 
+        ? (currentIndex[category] > 0 ? currentIndex[category] - 1 : maxIndex) 
+        : (currentIndex[category] < maxIndex ? currentIndex[category] + 1 : 0);
+
+    /*update HTML as navigate through*/
+    updateDisplay();
+}
+/* function to remove each item */
+function remove_item(category){
+    var item = categories[category][currentIndex[category]];
+    if(confirm('Are you sure to remove this item?')){
+        window.location.href = '/styler/wardrobe/?remove_id='+item.wardrobe_products_id;
+    }
+}
+
+/* on page load - update HTML*/
+$(document).ready(function () {
+    updateDisplay();
+
+    /* assign event listeners for each category navigation button*/
+    Object.keys(categories).forEach(category => {
+        $(`.wardrobe-${category} .prev`).click(() => navigate(category, 'prev'));
+        $(`.wardrobe-${category} .next`).click(() => navigate(category, 'next'));
+        $(`.wardrobe-${category} .remove`).click(() => remove_item(category));
+    });
+});
+</script>

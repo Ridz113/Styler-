@@ -1,0 +1,253 @@
+
+<!-- @hero -->
+<section class="hero-section">
+    <div class="hero-container">
+  
+        <img style="max-width: 593px;flex-grow: 1;max-height: 290px;" src="/styler/images/hero-img.jpg">
+  
+      <div style="padding: 10px;">
+        <h1>Transform Your Wardrobe, Virtually</h1>
+        <div class="text">
+        Discover the perfect look with our interactive wardrobe feature. Mix and match hats, tops, bottoms, and shoes to create your dream outfit — without having to go in store. Once you’re happy with your style, purchase directly from the store. Style made simple, fun, and personalised.</div>
+  
+        <div>
+            <a href="/styler/sign-in" style="background:#000;border-radius:10px;padding:10px 20px;font-size:16px;display: inline-block;margin-top: 20px;color: #fff;text-decoration: none;font-weight: bold;">Start Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- @hero -->
+  
+  
+  <div class="products-section">
+      <form id="filter_bar" style="opacity: 1; transition: opacity 300ms ease;">
+          <div class="filter-bar-menu-bg"></div>
+          
+          <div class="filter-bar">
+              <div class="clear-filters"><a href="/styler/index.php">Clear All</a></div>
+              <div class="filter-item">
+                  
+                  <button type="button" onclick="toggleDropdown('sort-menu')">
+                      <span class="filter-name">Sort</span>
+                      <div class="icon-drop_down">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="dropdown-icon">
+                              <path d="M480-360 280-560h400L480-360Z" />
+                          </svg>
+                      </div>
+                  </button>
+              </div>
+              
+              <div class="filter-item">
+                  
+                  <button type="button" onclick="toggleDropdown('budget-menu')">
+                      <span class="filter-name">Budget</span>
+                      <div class="icon-drop_down">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="dropdown-icon">
+                              <path d="M480-360 280-560h400L480-360Z" />
+                          </svg>
+                      </div>
+                  </button>
+              </div>
+  
+              <div class="filter-item">
+                  
+                  <button type="button" onclick="toggleDropdown('category-menu')">
+                      <span class="filter-name">Categories</span>
+                      <div class="icon-drop_down">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="dropdown-icon">
+                              <path d="M480-360 280-560h400L480-360Z" />
+                          </svg>
+                      </div>
+                  </button>
+              </div>
+  
+              <div class="filter-item">
+                  
+                  <button type="button" onclick="toggleDropdown('subcategory-menu')">
+                      <span class="filter-name">Subcategories</span>
+                      <div class="icon-drop_down">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="dropdown-icon">
+                              <path d="M480-360 280-560h400L480-360Z" />
+                          </svg>
+                      </div>
+                  </button>
+              </div>
+  
+              <div class="filter-item">
+                  
+                  <button type="button" onclick="toggleDropdown('gender-menu')">
+                      <span class="filter-name">Gender</span>
+                      <div class="icon-drop_down">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="dropdown-icon">
+                              <path d="M480-360 280-560h400L480-360Z" />
+                          </svg>
+                      </div>
+                  </button>
+              </div>
+  
+              <div class="filter-item">
+                  
+                  <button type="button" onclick="toggleDropdown('brand-menu')">
+                      <span class="filter-name">Brand</span>
+                      <div class="icon-drop_down">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="dropdown-icon">
+                              <path d="M480-360 280-560h400L480-360Z" />
+                          </svg>
+                      </div>
+                  </button>
+              </div>
+  
+              <div class="filter-item">
+                  
+                  <button type="button" onclick="toggleDropdown('colour-menu')">
+                      <span class="filter-name">Colour</span>
+                      <div class="icon-drop_down">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="dropdown-icon">
+                              <path d="M480-360 280-560h400L480-360Z" />
+                          </svg>
+                      </div>
+                  </button>
+              </div>
+  
+              <div class="filter-item">
+                  
+                  <button type="button" onclick="toggleDropdown('store-menu')">
+                      <span class="filter-name">Store</span>
+                      <div class="icon-drop_down">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="dropdown-icon">
+                              <path d="M480-360 280-560h400L480-360Z" />
+                          </svg>
+                      </div>
+                  </button>
+              </div>
+              <script src="home.js"></script>
+          </div>
+  
+          
+          <div style="position:absolute;width:100%;background:white;z-index:1000;">
+              <menu class="filter-menu" id="sort-menu">
+                  <div class="filter-menu-heading">Sort</div>
+                  <div class="option-item-wrapper">
+                      {sorting_options}
+                  </div>
+              </menu>
+              
+                  <menu class="filter-menu" id="budget-menu">
+                      <div class="filter-menu-heading">Budget</div>
+                      <div class="option-item-wrapper">
+                          <div class="option-item _item"> 
+                              <div class="range-slider">
+                                  <div class="slider-values">
+                                      <span id="min-value">£{min_range}</span>
+                                      <span id="max-value">£{max_range}</span>
+                                  </div>
+                                  <div class="slider-container">
+                                      <input onchange="update_range()" type="range" id="min-range" min="5" max="200" value="{min_range}" step="1" />
+                                      <input onchange="update_range()" type="range" id="max-range" min="5" max="200" value="{max_range}" step="1" />
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </menu>
+              
+                  <menu class="filter-menu" id="category-menu">
+                      <div class="filter-menu-heading">Categories</div>
+                      <div class="option-item-wrapper">
+                          {cats_options}
+                      </div>
+                  </menu>
+              
+                  <menu class="filter-menu" id="subcategory-menu">
+                      <div class="filter-menu-heading">Subcategories</div>
+                      <div class="option-item-wrapper">
+                          {subcats_options}
+                      </div>
+                  </menu>
+              
+                  <menu class="filter-menu" id="gender-menu">
+                      <div class="filter-menu-heading">Gender</div>
+                      <div class="option-item-wrapper">
+                          {gender_options}
+                      </div>
+                  </menu>
+              
+                  <menu class="filter-menu" id="brand-menu">
+                      <div class="filter-menu-heading">Brand</div>
+                      <div class="option-item-wrapper">
+                          {brand_options}
+                      </div>
+                  </menu>
+              
+                  <menu class="filter-menu" id="colour-menu">
+                      <div class="filter-menu-heading">Colour</div>
+                      <div class="option-item-wrapper">
+                          {colour_options}
+                      </div>
+                  </menu>
+              
+                  <menu class="filter-menu" id="store-menu">
+                      <div class="filter-menu-heading">Store</div>
+                      <div class="option-item-wrapper">
+                          {store_options}
+                      </div>
+                  </menu>
+          </div>
+      </form>
+      
+      <div class="products-container">
+          {products}
+      </div>
+  </div>
+  
+  <script>
+  function update_range(){
+      var min_range = document.getElementById('min-range').value;
+      var max_range = document.getElementById('max-range').value;
+      const url = new URL(window.location);
+      url.searchParams.set('price-range', min_range+'-'+max_range);
+      window.location = url;
+  
+  }
+  function update_results(checkbox) {
+      const url = new URL(window.location);
+      const params = url.searchParams;
+      const paramName = checkbox.name;
+      const paramValue = checkbox.value;
+  
+  
+      // Get all existing values for this parameter 
+      const values = params.getAll(paramName);
+  
+      if (checkbox.checked) {
+          // Add the value if it's not already in the URL
+          if (!values.includes(paramValue)) {
+              params.append(paramName, paramValue);
+          }
+      } else {
+          // Remove the value from the URL if it's unchecked
+          const newValues = values.filter(value => value !== paramValue);
+          // Delete the param and re-add remaining values
+          params.delete(paramName);
+          newValues.forEach(value => params.append(paramName, value));
+      }
+  
+      // Update the URL (reload the page with the new query string)
+      window.location = url;
+  }
+  
+  function query_string(key, value = null) {
+      const url = new URL(window.location);
+      
+      if (value === null) {
+          // Remove the parameter if value is null
+          url.searchParams.delete(key);
+      } else {
+          // Add or update the parameter
+          url.searchParams.set(key, value);
+      }
+  
+      window.location = url;
+  }
+  </script>
+  
+  

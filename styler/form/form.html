@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Input Forms</title>
+    <!-- CSS for form -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        form {
+            max-width: 600px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter Database Record</h1>
+    <form action="form.php" method="post" enctype="multipart/form-data">
+        <!-- Item Name -->
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <!-- Category ID -->
+        <div class="form-group">
+            <label for="category_id">Category:</label>
+            <select id="category_id" name="category_id" required>
+                <option value="">Select a Category</option>
+                {cats_options}
+            </select>
+        </div>
+
+        <!-- Subcategory ID -->
+        <div class="form-group">
+            <label for="subcategory_id">Subcategory:</label>
+            <select id="subcategory_id" name="subcategory_id" required>
+                <option value="">Select a Subcategory</option>
+                {subcat_options}
+            </select>
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select</option>
+                <option value="male">male</option>
+                <option value="female">female</option>
+                <option value="unisex">unisex</option>
+            </select>
+        </div>
+
+        <!-- Brand ID -->
+        <div class="form-group">
+            <label for="brand_id">Brand:</label>
+            <select id="brand_id" name="brand_id" required>
+                <option value="">Select a brand</option>
+                {brand_options}
+            </select>
+        </div>
+
+        <!-- Colour ID -->
+        <div class="form-group">
+            <label for="colour_id">Colour:</label>
+            <select id="colour_id" name="colour_id">
+                <option value="">Select a colour</option>
+                {colour_options}
+            </select>
+        </div>
+
+        <!-- Price -->
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" step="0.01" id="price" name="price" required>
+        </div>
+
+        <!-- Image upload and path -->
+        <div class="form-group">
+            <label for="image_url">Choose Image:</label>
+            <input type="file" name="file">
+        </div>
+        
+
+        <!-- Product URL -->
+        <div class="form-group">
+            <label for="product_url">Product URL:</label>
+            <input type="url" id="product_url" name="product_url">
+        </div>      
+
+        <!-- Store ID -->
+        <div class="form-group">
+            <label for="store_id">Store:</label>
+            <select id="store_id" name="store_id">
+                <option value="">Select a store</option>
+                {store_options}
+            </select>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
